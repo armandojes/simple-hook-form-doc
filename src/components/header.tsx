@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FC } from 'react';
 
 const LinkStyled = styled(Link)`
   color: #fff;
@@ -11,7 +12,7 @@ const LinkStyled = styled(Link)`
   text-decoration: none;
 `;
 
-function Header() {
+const Header: FC = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -29,6 +30,6 @@ function Header() {
       </Container>
     </AppBar>
   );
-}
+};
 
 export default Header;
