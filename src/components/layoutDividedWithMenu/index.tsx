@@ -9,7 +9,8 @@ const WrapperFlex = styled.div`
 `;
 const MenuWrapper = styled.div`
   width: 25%;
-  margin-right: 2em;
+  min-width: 25%;
+  margin-right: 3em;
 `;
 const BodyWrapper = styled.div`
   flex-grow: 1;
@@ -37,4 +38,4 @@ const LayoutDividedWithMenu: FC<Props> = ({ children, menuItems }) => (
 
 export default LayoutDividedWithMenu;
 
-export type { ImenuItems as ReImenuItems };
+export type { ImenuItems };

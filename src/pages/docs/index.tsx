@@ -1,14 +1,22 @@
 import { FC } from 'react';
-import LayoutDividedWithMenu, { ReImenuItems } from '../../components/layoutDividedWithMenu';
+import LayoutDividedWithMenu, { ImenuItems } from '../../components/layoutDividedWithMenu';
+import BasicUsage from './components/basicUsage';
+import Introduction from './components/Introduction';
+import RegisterInput from './components/registerInput';
 
-const menuItems: ReImenuItems = [
-  { label: 'option 1', location: 'deff' },
-  { label: 'option 2', location: 'deff' },
+const menuItems: ImenuItems = [
+  { label: 'Introducción', location: '/docs#start' },
+  { label: 'Ejemplo básico', location: '/docs#basic-usage' },
+  { label: 'RegisterInput', location: '/docs#register-input' },
 ];
 
 const Docs: FC = () => (
   <LayoutDividedWithMenu menuItems={menuItems}>
-    <h1>helo components</h1>
+    <>
+      <Introduction />
+      <BasicUsage />
+      <RegisterInput />
+    </>
   </LayoutDividedWithMenu>
 );
 
