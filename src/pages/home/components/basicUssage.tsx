@@ -9,9 +9,9 @@ const basicUssageCode = `
   const SomeComponent = () => {
     const { registerInput, values } = useForm();
 
-    console.log(values)
-    //  you will log:
-    //  { name: "", lastName: "", email: "" }
+    console.log(values.name)
+    console.log(values.lastName)
+    console.log(values.email)
 
     return (
       <form>

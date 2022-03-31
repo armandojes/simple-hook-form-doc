@@ -34,7 +34,7 @@ const Menu: FC<MenuPropsInterface> = ({ menuItems }) => (
     <Box marginTop="1em">
       {menuItems &&
         menuItems.map(item => (
-          <MenuItemStyled to={item.location}>
+          <MenuItemStyled to={item.location} key={item.location}>
             <Code />
             <Typography>{item.label}</Typography>
           </MenuItemStyled>
