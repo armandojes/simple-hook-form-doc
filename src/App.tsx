@@ -1,5 +1,6 @@
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 import Header from './components/header';
 import MuiThemeProvider from './context/muiTheme';
 import Docs from './pages/docs';
@@ -9,14 +10,16 @@ function App() {
   return (
     <BrowserRouter>
       <MuiThemeProvider>
-        <>
-          <CssBaseline />
-          <Header />
-          <Routes>
-            <Route element={<Home />} path="/" />
-            <Route element={<Docs />} path="/docs" />
-          </Routes>
-        </>
+        <SnackbarProvider maxSnack={3}>
+          <>
+            <CssBaseline />
+            <Header />
+            <Routes>
+              <Route element={<Home />} path="/" />
+              <Route element={<Docs />} path="/docs" />
+            </Routes>
+          </>
+        </SnackbarProvider>
       </MuiThemeProvider>
     </BrowserRouter>
   );
