@@ -6,11 +6,14 @@ import Menu, { ImenuItems } from './components/menu';
 
 const WrapperFlex = styled.div`
   display: flex;
+  align-items: flex-start;
 `;
 const MenuWrapper = styled.div`
   width: 25%;
   min-width: 25%;
   margin-right: 3em;
+  position: sticky;
+  top: 2em;
 `;
 const BodyWrapper = styled.div`
   flex-grow: 1;

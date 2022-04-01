@@ -1,11 +1,11 @@
 import { Code } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 import { colors } from '../../../constants';
 
-const MenuItemStyled = styled(Link)`
+const MenuItemStyled = styled(HashLink)`
   padding: 0.5em 0em;
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@ const Menu: FC<MenuPropsInterface> = ({ menuItems }) => (
     <Box marginTop="1em">
       {menuItems &&
         menuItems.map(item => (
-          <MenuItemStyled to={item.location} key={item.location}>
+          <MenuItemStyled to={item.location} key={item.location} smooth>
             <Code />
             <Typography>{item.label}</Typography>
           </MenuItemStyled>

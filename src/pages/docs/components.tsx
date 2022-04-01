@@ -28,6 +28,11 @@ export const Paragrapph: FC<ParagrapphProps> = ({ children }) => {
 
 interface SectionProps {
   children: string | ReactElement | ReactNode;
+  id?: string;
 }
 
-export const Section: FC<SectionProps> = ({ children }) => <Box padding="1.5em 0em">{children}</Box>;
+export const Section: FC<SectionProps> = ({ children, ...props }) => (
+  <Box padding="1.5em 0em" {...props}>
+    {children}
+  </Box>
+);
