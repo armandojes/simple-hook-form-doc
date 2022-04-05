@@ -1,3 +1,5 @@
+import { useFormContext } from "simple-hook-form";
+
 export const basicUsageHtml: string = `
   const Component = (props) => {
     return (
@@ -318,6 +320,300 @@ export const exampleDataPicker: string = `
           onChange={(newValue) => setInputValue('date2', newValue)}
         />
       </form>
+    )
+  };
+`;
+
+export const formErrorsExample: string = `
+  {
+    name: 'El nombre es requerido'
+    lastname: 'El apellido es requerido',
+    email: 'El correo no es valido',
+  }
+`;
+
+export const formErrorsExample2: string = `
+  const Component = () => {
+    const { registerInput, formErrors, setFormErrors } = useForm();
+
+    const handleSetErrors = () => {
+      setFormErrors({
+        name: 'El nombre es requerido'
+        lastname: 'El apellido es requerido',
+        email: 'El correo no es válido'
+      })
+    };
+
+
+    return (
+      <form>
+        <input type="text" {...registerInput('name')} />
+        {!!formErrors.name && (
+          <div className="error-message">{formErrors.name}</div>
+        )}
+
+        <input type="text" {...registerInput('lastname')} />
+        {!!formErrors.lastname && (
+          <div className="error-message">{formErrors.lastname}</div>
+        )}
+
+        <input type="text" {...registerInput('email')} />
+        {!!formErrors.email && (
+          <div className="error-message">{formErrors.email}</div>
+        )}
+
+        <Button onClick={handleSetErrors}>
+          Establecer errores
+        </button>
+
+      </form>
+    );
+  };
+
+`;
+
+export const propError: string = `
+  const Component = () => {
+    const { registerInput, setFormErrors } = useForm();
+    
+    // definimos los errores al montar el componente
+    useEffect(() => {
+      setFormErrors({
+        name: 'El nombre no es válido'
+        lastname: 'El apellido no es válido'
+      });
+    }, [])
+
+
+    // registerInput injectará la propiedad \`error:true\` para los inputs
+    // \`name\` y \`lastname\` porque existen errores para estos inputs
+    // injectara \`error:false\` para email, porque no hay error definido para email
+    return (
+      <form>
+        <input type="text" {...registerInput('name')} />
+        <input type="text" {...registerInput('lastname')} />
+        <input type="text" {...registerInput('email')} />
+      </form>
+    );
+  };
+
+`;
+
+export const inputWithPropError: string = `
+  // definimos nuestro componente
+  const GenericInput = ({ error, ...othrerProps }) => {
+
+    // creamos el objeto \`style\` para el input con error
+    const styleWithError = { borderColor: '1px solid red' };
+
+    // pasamos el objeto \`styleWithError\` si hay error de lo contrario
+    // pasamos un objeto vacio.
+    return (
+      <input {...otherProps} style={error ? styleWithError : {}} />
+    )
+  }
+`;
+
+export const useingGenericInput: string = `
+  import GenericInput from './compoennts/GenericInput'
+
+  const Component = () => {
+    const { registerInput, formErrors, setFormErrors } = useForm();
+
+    // creamos los errores para \`name\` y \`lastname\`
+    const handleSetErrors = () => {
+      setFormErrors({
+        name: 'El nombre es requerido'
+        lastname: 'El apellido es requerido',
+      })
+    };
+
+    // renderizamos el componente \`GenericInput\` en lugar del input html
+    return (
+      <form>
+        <GenericInput type="text" {...registerInput('name')} />
+        {!!formErrors.name && (
+          <div className="error-message">{formErrors.name}</div>
+        )}
+
+        <GenericInput type="text" {...registerInput('lastname')} />
+        {!!formErrors.lastname && (
+          <div className="error-message">{formErrors.lastname}</div>
+        )}
+
+        <GenericInput type="text" {...registerInput('email')} />
+        {!!formErrors.email && (
+          <div className="error-message">{formErrors.email}</div>
+        )}
+
+        <Button onClick={handleSetErrors}>
+          Establecer errores
+        </button>
+
+      </form>
+    );
+  };
+`;
+
+export const cleaningErrors: string = `
+  const Component = () => {
+    const { registerInput, setFormErrors, removeInputError } = useForm();
+
+    // limpia todos los errores
+    const handleRemoveAllErrors = () => {
+      setFormErrors({})
+    };
+
+    // limpia solo el error del input \`email\`
+    const handleRemoveEmailError = () => {
+      removeInputError('email')
+    };
+
+    return (
+      <form>
+        <input type="text" {...registerInput('name')} />
+        <input type="text" {...registerInput('lastname')} />
+        <input type="text" {...registerInput('email')} />
+      </form>
+    )
+  };
+`;
+
+export const formWithMultipleStepes: string = `
+  const GeneralData = ({ registerInput }) => {
+    return (
+      <>
+        <intput type="text" {...registerInput('name')} />
+        <intput type="text" {...registerInput('lastName')} />
+        <intput type="text" {...registerInput('email')} />
+        <intput type="text" {...registerInput('password')} />
+      </>
+    )
+  };
+
+  const Specifidata = ({ registerInput }) => {
+    return (
+      <>
+        <intput type="number" {...registerInput('weight')} />
+        <intput type="number" {...registerInput('height')} />
+        <intput type="text" {...registerInput('ZodiacSign')} />
+        <intput type="text" {...registerInput('otherPreferences')} />
+      </>
+    )
+  };
+
+  const ComponentParent = () => {
+    const [currentStep, setCurrentStep] = useState(1);
+    const {values, registerInputs } = useForm()
+
+    return (
+      <form>
+        {currentStep === 1 && <GeneralData regiterInput={registerInput} />}
+        {currentStep === 2 && <Specifidata regiterInput={registerInput} />}
+      </form>
+    )
+  };
+
+`;
+
+export const formProvider: string = `
+  import { useForm, FormProvider } from 'simple-hook-form';
+
+  // podemos pasar los metodos y propiedades uno por uno
+  const ExampleA = {
+    const {
+      setInputValue,
+      removeInputError,
+      setFormErrors,
+      values,
+      formErrors,
+      registerInput,
+      registerCheckbox,
+      registerRadio,
+      reset,
+    } = useForm();
+  
+    return (
+      <FormProvider
+        setInputValue={setInputValue}
+        removeInputError={removeInputError}
+        setFormErrors={setFormErrors}
+        values={values}
+        formErrors={formErrors},
+        registerInput={registerInput},
+        registerCheckbox={registerCheckbox},
+        registerRadio={registerRadio},
+        reset={reset},
+      >
+        <form> ... </form>
+      </formProvider>
+    )
+  }
+
+  // o preferiblemente podemos usar la sintaxis de desestructuracion
+  const ExampleB = () => {
+    const formHandlers = useForm();
+  
+    return (
+      <FormProvider {...formHandlers}>
+        <form>...</form>
+      </FormProvider>
+    );
+  };
+`;
+
+export const useFormContextExample: string = `
+  const SomeNestedComponenet = () => {
+    const { registerInput, values, formErrors, ...otherProps } = useFormContext();
+
+    return (...)
+  };
+
+`;
+
+export const formContextWithSpeps2: string = `
+  const GeneralData = () => {
+    const { registerInput } = useFormContext();
+
+    return (
+      <>
+        <intput type="text" {...registerInput('name')} />
+        <intput type="text" {...registerInput('lastName')} />
+        <intput type="text" {...registerInput('email')} />
+        <intput type="text" {...registerInput('password')} />
+      </>
+    )
+  };
+
+  const Specifidata = () => {
+    const { registerInput } = useFormContext();
+
+    return (
+      <>
+        <intput type="number" {...registerInput('weight')} />
+        <intput type="number" {...registerInput('height')} />
+        <intput type="text" {...registerInput('ZodiacSign')} />
+        <intput type="text" {...registerInput('otherPreferences')} />
+      </>
+    )
+  };
+
+  const ComponentParent = () => {
+    const [currentStep, setCurrentStep] = useState(1);
+    const formHandlers = useForm()
+    
+    // loggear \`values\` si cambia
+    useEffect(() => {
+      console.log(formHandlers.values)
+    }, [formHandlers.values]);
+
+    return (
+      <FormProvider {...formHandlers}>
+        <form>
+          {currentStep === 1 && <GeneralData />}
+          {currentStep === 2 && <Specifidata />}
+        </form>
+      </FormProvider>
     )
   };
 `;

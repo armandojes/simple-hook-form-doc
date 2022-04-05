@@ -1,5 +1,6 @@
-import { Box, Typography } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 import { FC, ReactElement, ReactNode } from 'react';
+import styled from 'styled-components';
 import { colors } from '../../constants';
 
 interface TitleProps {
@@ -36,3 +37,16 @@ export const Section: FC<SectionProps> = ({ children, ...props }) => (
     {children}
   </Box>
 );
+
+export const Code = styled.code`
+  white-space: pre;
+`;
+
+export const TextFieldStyled = styled(TextField)`
+  background: #333946;
+  border-radius: 0.3em;
+  & ::placeholder {
+    color: gray;
+    opacity: 1.7;
+  }
+`;

@@ -7,6 +7,7 @@ import {
   basicUsageReactWithSHF,
   booleanDefaultValue,
   chackboxExample,
+  cleaningErrors,
   completeBasicExample,
   exampleCustomValie1,
   exampleCustomValie2,
@@ -15,11 +16,21 @@ import {
   exampleRadio,
   exampleReset,
   exmapleSetInputValue,
+  formContextWithSpeps2,
+  formErrorsExample,
+  formErrorsExample2,
+  formProvider,
+  formWithMultipleStepes,
   initialValuesInput,
+  inputWithPropError,
+  propError,
   radioExample,
   registerInputExamples,
+  useFormContextExample,
+  useingGenericInput,
 } from './codesExamples';
 import { Title, Paragrapph, Section } from './components';
+import { DemoFormErrors, DemoFormErrorsCustomInput } from './demos';
 
 const menuItems: ImenuItems = [
   { label: 'Introducción', location: '/docs#start' },
@@ -30,7 +41,10 @@ const menuItems: ImenuItems = [
   { label: 'Actualizacion de valores', location: '/docs#set-state' },
   { label: 'Reset', location: '/docs#reset' },
   { label: 'Valores personalizados', location: '/docs#custom-values' },
-  { label: 'integracion con inputs personalizados', location: '/docs#custom-input' },
+  { label: 'Integracion con inputs personalizados', location: '/docs#custom-input' },
+  { label: 'Manejo de errores', location: '/docs#intro-errors' },
+  { label: 'Limpiar errores', location: '/docs#clean-errors' },
+  { label: 'Inputs anidados', location: '/docs#nested-inputs' },
 ];
 
 const Docs: FC = () => (
@@ -183,6 +197,135 @@ const Docs: FC = () => (
           funcion `onChange` que nos devuelve la fecha seleccionada.
         </Paragrapph>
         <Highlight className="javascript">{exampleDataPicker}</Highlight>
+      </Section>
+      <Section id="intro-errors">
+        <Title>Introduccion al manejo de errors</Title>
+        <Paragrapph>
+          Si bien <Resalt>simple-hook-form</Resalt> no integra ningun metodo para validar inputs, si integra mecanismos
+          simples para facilitar el manejo de errores.
+        </Paragrapph>
+        <Paragrapph>
+          El mecanismo de manejo de errores consta de tres partes fundamentales: <br />
+          <ul>
+            <li>
+              <Resalt>formErrors (object)</Resalt>: Un objeto de errores.
+            </li>
+            <li>
+              <Resalt>setFormErrors (function)</Resalt>: Una funcion para actualizar el objeto de errores.
+            </li>
+            <li>
+              <Resalt>error: (boolean)</Resalt>: propiedad que se inyecta al input.
+            </li>
+          </ul>
+        </Paragrapph>
+        <Paragrapph>
+          <Resalt>formErrors</Resalt> es sun simple objeto con la descripcion de los errores. por ejemplo
+          <Highlight className="javascript">{formErrorsExample}</Highlight>
+        </Paragrapph>
+        <Paragrapph>
+          Usaremos este objeto de errores para mostrar mensajes en alguna parte de nuestra interfaz, en el siguente
+          ejemplo se muetran el error correspondiente debajo de cada input.
+        </Paragrapph>
+        <Highlight className="javascript">{formErrorsExample2}</Highlight>
+        <Paragrapph>Demostracion interactivo del codigo anterior</Paragrapph>
+        <DemoFormErrors />
+        <Paragrapph>
+          Ya hemos visto como funcionan <Resalt>formErrors</Resalt> y <Resalt>setFormErrors</Resalt> en el ejemplo
+          anterior, ahora veamos como funcion la propiedad error que se inyecta al input.
+        </Paragrapph>
+        <Paragrapph>
+          Las funciones `registerInput`, `registerRadio` y `registerCheckbox` injectan la propedad error de tipo
+          `boolean` al input.
+        </Paragrapph>
+        <Paragrapph>
+          Como funciona es que primero se verifica el objeto de errores, si se encuentrar un error definido para el
+          input entonces se injecta la propiedad `error: true` si no hay un error se injecta `error: false`: vea el
+          siguente ejemplo:
+        </Paragrapph>
+        <Highlight className="javascript">{propError}</Highlight>
+        <Paragrapph>
+          Ya hemos visto como se define la propiedad error injectada al input, ahora vamos a preparar nuestro input para
+          cambiar el color del borde a rojo en base a la propiedad `error`. <br />
+        </Paragrapph>
+        <Paragrapph>
+          Nota: La mayoria de las librerias de interfaces ya viene preparado para actuar en base a la propiedad error,
+          por ejemplo material UI colorea el borde del input en rojo si se le pasa la propiedada `error: true`, en esta
+          ocacion crearemos nuestro propio input para manejar la prop `error`.
+        </Paragrapph>
+        <Highlight className="javascript">{inputWithPropError}</Highlight>
+        <Paragrapph>
+          En el codigo anterior coloreamos el borde del input usando estilos en linea basado en la prop error, sin
+          embargo usted es libre de manejarlo como desee, puede alternar clases, puede manejarlo con styled-componentes,
+          etc..
+        </Paragrapph>
+        <Paragrapph>Ahora vamos a usar nuestro nuevo component `genericInput`</Paragrapph>
+        <Highlight className="javascript">{useingGenericInput}</Highlight>
+        <Paragrapph>Ahora nuestros inputs deberian cambiar su borde a color rojo si hay un error</Paragrapph>
+        <DemoFormErrorsCustomInput />
+        <Paragrapph>
+          Como hemos mencionado anteriormente usted es el responsable de validar su formulario y de proporcionar el
+          objeto de errors <Resalt>formErrors</Resalt> para actualizar su interfaz.
+        </Paragrapph>
+      </Section>
+      <Section id="clean-errors">
+        <Title>Limpiar Errores</Title>
+        <Paragrapph>
+          Como seguramente habras notado los errores se limpian automaticamente con el evento <Resalt>focus</Resalt> del
+          input.
+          <br />
+          Las funciones <Resalt>registerInput</Resalt>, <Resalt>registerCheckbox</Resalt> y{' '}
+          <Resalt>registerRadio</Resalt> injectan la funcion onFocus al input para limpiar los errores. <br />
+        </Paragrapph>
+        <Paragrapph>
+          Si necesita limpiar todos los errores del formulario de forma programatica simplemente ejecute la funcion{' '}
+          <Resalt>setFormErrors</Resalt> pasandole como argumento un objeto vacío.
+        </Paragrapph>
+        <Paragrapph>
+          Si necesita limpiar el error de algun input en especifico proporcionamos la funcion{' '}
+          <Resalt>removeInputError</Resalt> recibe como parametro el nombre del input.
+        </Paragrapph>
+        <Highlight className="javascript">{cleaningErrors}</Highlight>
+      </Section>
+      <Section id="nested-inputs">
+        <Title>Inputs anidados</Title>
+        <Paragrapph>
+          No todos los formularios son tan simples como hemos visto en los ejemplos anteriores, a veces es necesario
+          dividir un formulario complejo en piezas mas pequeñas.
+        </Paragrapph>
+        <Paragrapph>
+          Considera el siguente ejemplo, tenemos un formulario de dos pasos, en el paso 1 capturamos los datos generales
+          y en el segundo paso capturamos datos mas espesificos.
+        </Paragrapph>
+        <Highlight className="javascript">{formWithMultipleStepes}</Highlight>
+        <Paragrapph>
+          Lo que hemos hecho es pasar la funcion <Resalt>registerInput</Resalt> como prop a los componentes{' '}
+          <Resalt>GeneralInput</Resalt> y <Resalt>SpecificData</Resalt>. Si necesitamos mostrar errores tendriamos que
+          pasar la el objeto de errores tambien y la funcion para setear o remover errores, y cuando tengamos
+          componentes con mas niveles de anidamiento tendriamos que pasar estas props en todo el arbol de componentes y
+          eso se vuelve facilmente inmanejable.
+        </Paragrapph>
+        <Paragrapph>
+          Este es un buen escenario para usar <Resalt>React.context</Resalt> para solucionar este problema y{' '}
+          <Resalt>simple-hook-form</Resalt> ya viene listo para esto.
+        </Paragrapph>
+        <Paragrapph>
+          <Resalt>simple-hook-form</Resalt> exporta el component <Resalt>FormProvider</Resalt> para compartir los
+          metodos del formulario y <Resalt>useFormContext</Resalt> para obtener acceso a los methodos del formulario.
+        </Paragrapph>
+        <Paragrapph>
+          A <Resalt>FormProvider</Resalt> le tenemos que pasar todos los metodos y propiedades devueltos por{' '}
+          <Resalt>useForm</Resalt>
+        </Paragrapph>
+        <Highlight className="javascript">{formProvider}</Highlight>
+        <Paragrapph>
+          con el hook <Resalt>useFormContext</Resalt> obtenemos acceso a todo los metdos y propiedades devueltos por
+          <Resalt>useForm</Resalt>
+        </Paragrapph>
+        <Highlight className="javascript">{useFormContextExample}</Highlight>
+        <Paragrapph>
+          Ahora continuando con nuestro ejemplo anterior del formulario de dos pasos, usando el contexto se veria asi:
+        </Paragrapph>
+        <Highlight className="javascript">{formContextWithSpeps2}</Highlight>
       </Section>
     </>
   </LayoutDividedWithMenu>

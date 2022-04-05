@@ -9,10 +9,11 @@ const Code = styled.code`
 `;
 
 const TextFieldStyled = styled(TextField)`
-  background: #fff;
+  background: #333946;
   border-radius: 0.3em;
   & ::placeholder {
-    opacity: 0.7;
+    color: gray;
+    opacity: 1.7;
   }
 `;
 
