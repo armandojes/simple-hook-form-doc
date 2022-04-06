@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
 import Highlight from 'react-highlight';
 
-const basicUssageCode = `
+const basicUssageCode: string = `
   import React from 'react';
   import { useForm } from 'simple-hook-form';
 

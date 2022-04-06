@@ -14,13 +14,13 @@ const LinkStyled = styled(Link)`
 
 const Header: FC = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LinkStyled to="/">
             <Typography>Inicio</Typography>
           </LinkStyled>
-          <LinkStyled to="/doc">
+          <LinkStyled to="/docs">
             <Typography>Documentación</Typography>
           </LinkStyled>
           <LinkStyled to="/tutorial">

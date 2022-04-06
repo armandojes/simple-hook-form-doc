@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material';
+import { Box, Container, Hidden } from '@mui/material';
 import { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import Wrapper from '../wraper';
@@ -13,10 +13,12 @@ const MenuWrapper = styled.div`
   min-width: 25%;
   margin-right: 3em;
   position: sticky;
-  top: 2em;
+  top: 6em;
 `;
 const BodyWrapper = styled.div`
   flex-grow: 1;
+  max-width: 100%;
+  box-sizing: border-box;
 `;
 
 interface Props {
@@ -29,9 +31,11 @@ const LayoutDividedWithMenu: FC<Props> = ({ children, menuItems }) => (
     <Container maxWidth="lg">
       <Box padding="2em 0em">
         <WrapperFlex>
-          <MenuWrapper>
-            <Menu menuItems={menuItems} />
-          </MenuWrapper>
+          <Hidden smDown>
+            <MenuWrapper>
+              <Menu menuItems={menuItems} />
+            </MenuWrapper>
+          </Hidden>
           <BodyWrapper>{children}</BodyWrapper>
         </WrapperFlex>
       </Box>

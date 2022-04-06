@@ -19,7 +19,7 @@ const Cover: FC = () => {
         you always wanted
       </Typography>
       <Typography fontSize="1.1em">
-        Simple-hook-form es una libreria pequeña (1kb), simple y robusta para manejar formularios en ReactJs, es facil
+        Simple-hook-form es una libreria pequeña (1kb), simple y robusta para manejar formularios en ReactJs, es fácil
         razonar en todo momento, no hay nada oculto, no hay trucos.
       </Typography>
     </TextWrapper>

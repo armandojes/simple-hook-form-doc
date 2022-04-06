@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { FC } from 'react';
 import Highlight from 'react-highlight';
 import LayoutDividedWithMenu, { ImenuItems } from '../../components/layoutDividedWithMenu';
@@ -34,14 +35,14 @@ import { DemoFormErrors, DemoFormErrorsCustomInput } from './demos';
 
 const menuItems: ImenuItems = [
   { label: 'Introducción', location: '/docs#start' },
-  { label: 'Uso basico', location: '/docs#basic-usage' },
+  { label: 'Uso básico', location: '/docs#basic-usage' },
   { label: 'Registrar entradas', location: '/docs#register-input' },
   { label: 'Checkbox y radio', location: '/docs#checkbox-radio' },
   { label: 'Valores iniciales', location: '/docs#initial-values' },
-  { label: 'Actualizacion de valores', location: '/docs#set-state' },
+  { label: 'Actualización de valores', location: '/docs#set-state' },
   { label: 'Reset', location: '/docs#reset' },
   { label: 'Valores personalizados', location: '/docs#custom-values' },
-  { label: 'Integracion con inputs personalizados', location: '/docs#custom-input' },
+  { label: 'Integración con inputs personalizados', location: '/docs#custom-input' },
   { label: 'Manejo de errores', location: '/docs#intro-errors' },
   { label: 'Limpiar errores', location: '/docs#clean-errors' },
   { label: 'Inputs anidados', location: '/docs#nested-inputs' },
@@ -153,8 +154,8 @@ const Docs: FC = () => (
         <Paragrapph>
           Es común querer resetear los valores del formulario, para ello tenemos la función <Resalt>reset</Resalt>, esta
           función resetea el formulario a su valor inicial.
-          <Highlight className="javascript">{exampleReset}</Highlight>
         </Paragrapph>
+        <Highlight className="javascript">{exampleReset}</Highlight>
       </Section>
       <Section id="custom-values">
         <Title>Valores personalizado</Title>
@@ -162,13 +163,15 @@ const Docs: FC = () => (
           En ocasiones necesitamos enviar algún valor personalizado que no forme parte de los inputs del formulario, por
           ejemplo al iniciar sesión talvez queremos enviar la fecha o cualquier otro valor arbitrario, para ello tenemos
           dos formas de hacerlo:
+        </Paragrapph>
+        <Box color="#fff">
           <ul>
             <li>Establecerlo como parte del valor inicial.</li>
             <li>
               Usar la función <Resalt>setInputValue</Resalt> para establecer el valor.
             </li>
           </ul>
-        </Paragrapph>
+        </Box>
         <Paragrapph>
           En el siguiente ejemplo, tenemos un valor personalizado que se inicializa como parte del valor inicial
         </Paragrapph>
@@ -206,6 +209,8 @@ const Docs: FC = () => (
         </Paragrapph>
         <Paragrapph>
           El mecanismo de manejo de errores consta de tres partes fundamentales: <br />
+        </Paragrapph>
+        <Box color="#fff">
           <ul>
             <li>
               <Resalt>formErrors (object)</Resalt>: Un objeto de errores.
@@ -217,11 +222,11 @@ const Docs: FC = () => (
               <Resalt>error: (boolean)</Resalt>: propiedad que se inyecta al input.
             </li>
           </ul>
-        </Paragrapph>
+        </Box>
         <Paragrapph>
           <Resalt>formErrors</Resalt> es un simple objeto con la descripción de los errores. Por ejemplo
-          <Highlight className="javascript">{formErrorsExample}</Highlight>
         </Paragrapph>
+        <Highlight className="javascript">{formErrorsExample}</Highlight>
         <Paragrapph>
           Usaremos este objeto de errores para mostrar mensajes en alguna parte de nuestra interfaz, en el siguiente
           ejemplo se muestran el error correspondiente debajo de cada input.
