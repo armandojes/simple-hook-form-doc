@@ -70,7 +70,7 @@ export const DemoFormErrors: FC = () => {
             </Collapse>
             <Box marginTop="1em">
               <Button variant="contained" onClick={handleSetErrors}>
-                Establecer errorres
+                Establecer errores
               </Button>
             </Box>
           </div>
@@ -126,7 +126,7 @@ export const DemoFormErrorsCustomInput: FC = () => {
             </Collapse>
             <Box marginTop="1em">
               <Button variant="contained" onClick={handleSetErrors}>
-                Establecer errorres
+                Establecer errores
               </Button>
             </Box>
           </div>

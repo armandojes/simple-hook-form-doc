@@ -1,5 +1,3 @@
-import { useFormContext } from "simple-hook-form";
-
 export const basicUsageHtml: string = `
   const Component = (props) => {
     return (
@@ -175,7 +173,7 @@ export const exampleRadio: string = `
 
 export const exmapleSetInputValue: string = `
   const Component = () => {
-    const { registerInput, setInputValue,vaues } = useForm();
+    const { registerInput, setInputValue, values } = useForm();
 
     const handleClick = () => {
       setInputValue('name', 'jose')
