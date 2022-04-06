@@ -12,15 +12,15 @@ const Cover: FC = () => {
   return (
     <TextWrapper>
       <Typography variant="h2" fontWeight="bold" paddingTop="2em" paddingBottom="0.5em">
-        The React{' '}
+        Manejar formularios en{' '}
         <Box component="span" color={colors.blueLight}>
-          form handler{' '}
+          React{' '}
         </Box>{' '}
-        you always wanted
+        no tiene por qué ser difícil.
       </Typography>
       <Typography fontSize="1.1em">
-        Simple-hook-form es una libreria pequeña (1kb), simple y robusta para manejar formularios en ReactJs, es fácil
-        razonar en todo momento, no hay nada oculto, no hay trucos.
+        Simple-hook-form es una librería pequeña (1kb), simple y robusta para manejar formularios en ReactJs, abstrae
+        las complejidades y reduce el código repetitivo.
       </Typography>
     </TextWrapper>
   );

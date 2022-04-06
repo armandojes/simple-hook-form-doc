@@ -1,6 +1,7 @@
 import { Box, Button, Container } from '@mui/material';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import ScrollRestoration from '../../components/scrollRestoration';
 import Wrapper from '../../components/wraper';
 import BasicUssage from './components/basicUssage';
 import Cover from './components/cover';
@@ -11,6 +12,7 @@ const Home: FC = () => {
   return (
     <Wrapper>
       <Container maxWidth="md">
+        <ScrollRestoration />
         <Cover />
         <Installation />
         <BasicUssage />

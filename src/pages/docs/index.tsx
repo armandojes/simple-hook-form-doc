@@ -3,6 +3,7 @@ import { FC } from 'react';
 import Highlight from 'react-highlight';
 import LayoutDividedWithMenu, { ImenuItems } from '../../components/layoutDividedWithMenu';
 import Resalt from '../../components/resalt';
+import ScrollRestoration from '../../components/scrollRestoration';
 import {
   basicUsageHtml,
   basicUsageReactWithSHF,
@@ -51,6 +52,7 @@ const menuItems: ImenuItems = [
 const Docs: FC = () => (
   <LayoutDividedWithMenu menuItems={menuItems}>
     <>
+      <ScrollRestoration />
       <Section id="start">
         <Title>Introducción</Title>
         <Paragrapph>
