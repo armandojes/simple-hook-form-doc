@@ -12,21 +12,28 @@ const LinkStyled = styled(Link)`
   text-decoration: none;
 `;
 
+const ToolbarStyled = styled(Toolbar)`
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
 const Header: FC = () => {
   return (
     <AppBar position="sticky">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <ToolbarStyled disableGutters>
           <LinkStyled to="/">
             <Typography>Inicio</Typography>
           </LinkStyled>
           <LinkStyled to="/docs">
             <Typography>Documentación</Typography>
           </LinkStyled>
-          <LinkStyled to="/tutorial">
-            <Typography>Tutoriales</Typography>
+          <LinkStyled href="https://github.com/armandojes/simple-hook-form" as="a">
+            <Typography>Github</Typography>
           </LinkStyled>
-        </Toolbar>
+        </ToolbarStyled>
       </Container>
     </AppBar>
   );
