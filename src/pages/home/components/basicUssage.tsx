@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
 import Highlight from 'react-highlight';
+import { colors } from '../../../constants';
 
 const basicUssageCode: string = `
   import React from 'react';
@@ -23,13 +24,15 @@ const basicUssageCode: string = `
   };
 `;
 
-const BasicUssage: FC = () => (
-  <Box>
-    <Typography variant="h6" color="#fff" fontWeight="bold">
-      Uso básico
-    </Typography>
-    <Highlight className="javascript">{basicUssageCode}</Highlight>
-  </Box>
-);
+const BasicUssage: FC = () => {
+  return (
+    <Box>
+      <Typography variant="h6" color={colors.blueLight} fontWeight="bold">
+        Uso básico
+      </Typography>
+      <Highlight className="javascript">{basicUssageCode}</Highlight>
+    </Box>
+  );
+};
 
 export default BasicUssage;

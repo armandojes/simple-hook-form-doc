@@ -5,19 +5,15 @@ import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FC } from 'react';
-import ToggleThemeMode from './components/toogleThemeMode';
-import { useCalculateByThemeMode } from '../../context/themeMode';
+import ToggleThemeMode from './components/toggleThemeMode';
+import { colors } from '../../constants';
 
-interface AppBarStyledProps {
-  $backgrounColor: string;
-}
-
-const AppBarStyled = styled(AppBar)<AppBarStyledProps>`
-  background-color: ${props => props.$backgrounColor};
+const AppBarStyled = styled(AppBar)`
+  background-color: ${props => (props.theme.darkMode ? colors.blackLight : colors.white)};
 `;
 
 const LinkStyled = styled(Link)`
-  color: #fff;
+  color: ${props => (props.theme.darkMode ? colors.white : colors.blackLight)};
   padding: 0em 0.5em;
   text-decoration: none;
 `;
@@ -31,10 +27,8 @@ const ToolbarStyled = styled(Toolbar)`
 `;
 
 const Header: FC = () => {
-  const calc = useCalculateByThemeMode();
-
   return (
-    <AppBarStyled position="sticky" $backgrounColor={calc({ dark: '#000', light: '#fff' })}>
+    <AppBarStyled position="sticky">
       <Container maxWidth="xl">
         <ToolbarStyled disableGutters>
           <MenuWrapper>

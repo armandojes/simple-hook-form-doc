@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'highlight.js/styles/ocean.css';
 import './index.css';
-import { ThemeModeProvider } from './context/themeMode';
+import { ThemeModeProvider } from './context/darkMode';
+import StyledThemeProvider from './context/styledThemeMode';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeModeProvider>
-      <App />
+      <StyledThemeProvider>
+        <App />
+      </StyledThemeProvider>
     </ThemeModeProvider>
   </React.StrictMode>,
   document.getElementById('root')

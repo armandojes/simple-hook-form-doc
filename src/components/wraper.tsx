@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../constants';
 
 const WrapperSatyled = styled.div`
-  background-color: ${colors.blackLight};
+  background-color: ${props => (props.theme.darkMode ? colors.blackLight : colors.white)};
   min-height: 100vh;
 `;
 

@@ -3,6 +3,8 @@ import { useSnackbar } from 'notistack';
 import { FC, SyntheticEvent } from 'react';
 import { useForm } from 'simple-hook-form';
 import styled from 'styled-components';
+import { colors } from '../../../constants';
+import { useDarkMode } from '../../../context/darkMode';
 
 const Code = styled.code`
   white-space: pre;
@@ -44,6 +46,7 @@ const Demo: FC = () => {
     initialValues: {},
   });
   const snakbar = useSnackbar();
+  const { darkMode } = useDarkMode();
 
   const handleReset = () => {
     reset();
@@ -64,12 +67,14 @@ const Demo: FC = () => {
     return null;
   };
 
+  const calculatedColor: string = darkMode ? colors.white : colors.blackLight;
+
   return (
     <Box padding="2em 0em">
-      <Typography fontWeight="bold" variant="h6" color="#fff">
+      <Typography fontWeight="bold" variant="h6" color={calculatedColor}>
         Demo
       </Typography>
-      <Typography color="#fff">* Todos los inputs son requeridos</Typography>
+      <Typography color={calculatedColor}>* Todos los inputs son requeridos</Typography>
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <form autoComplete="off" onSubmit={handleSubmit}>
@@ -126,18 +131,18 @@ const Demo: FC = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Box marginTop="1em" marginLeft="2em">
-            <Typography fontWeight="bold" color="#fff">
+            <Typography fontWeight="bold" color={calculatedColor}>
               Estado
             </Typography>
-            <Box color="#fff">
+            <Box color={calculatedColor}>
               <Code>{getResult(values)}</Code>
             </Box>
           </Box>
           <Box marginTop="1em" marginLeft="2em">
-            <Typography fontWeight="bold" color="#fff">
+            <Typography fontWeight="bold" color={calculatedColor}>
               Errores
             </Typography>
-            <Box color="#fff">
+            <Box color={calculatedColor}>
               <Code>{getErrors(formErrors)}</Code>
             </Box>
           </Box>
