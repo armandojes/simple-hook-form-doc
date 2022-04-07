@@ -29,6 +29,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy:prod": "vercel --prod",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -64,6 +65,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "install": "^0.13.0",
     "npm": "^8.5.5",
-    "prettier": "^2.6.1"
+    "prettier": "^2.6.1",
+    "vercel": "^24.0.1"
   }
 }
