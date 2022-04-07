@@ -18,10 +18,10 @@
     "notistack": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-highlight": "^0.14.0",
     "react-router-dom": "^6.2.2",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.0",
+    "react-syntax-highlighter": "^15.5.0",
     "simple-hook-form": "^0.0.2",
     "styled-components": "^5.3.5",
     "typescript": "^4.6.3",
@@ -48,8 +48,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-highlight": "^0.12.5",
     "@types/react-router-hash-link": "^2.4.5",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",

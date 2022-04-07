@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
-import Highlight from 'react-highlight';
+import Highlight from '../../../components/highlight';
 
 const installationCode = `
   // usando npm
@@ -17,7 +17,7 @@ const Instalation: FC = () => {
       <Typography variant="h6" fontWeight="bold">
         Instalación
       </Typography>
-      <Highlight className="language-bash">{installationCode}</Highlight>
+      <Highlight language="bash">{installationCode}</Highlight>
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import Highlight from 'react-highlight';
+import Highlight from '../../components/highlight';
 import LayoutDividedWithMenu, { ImenuItems } from '../../components/layoutDividedWithMenu';
 import Resalt from '../../components/resalt';
 import ScrollRestoration from '../../components/scrollRestoration';
@@ -71,12 +71,12 @@ const Docs: FC = () => (
           <Resalt>simple-hook-form</Resalt> es muy simple y es fácil de razonar en todo momento, este es el ejemplo más
           simple, primero comencemos con un formulario simple sin estado.
         </Paragrapph>
-        <Highlight className="javascript">{basicUsageHtml}</Highlight>
+        <Highlight language="javascript">{basicUsageHtml}</Highlight>
         <Paragrapph>
           Ahora agregamos <Resalt>simple-hook-form</Resalt> para sincronizar el valor de los inputs con el estado de
           react.
         </Paragrapph>
-        <Highlight className="javascript">{basicUsageReactWithSHF}</Highlight>
+        <Highlight language="javascript">{basicUsageReactWithSHF}</Highlight>
         <Paragrapph>
           Listo, esto es todo lo necesario, ahora todo lo que el usuario ingrese dentro del formulario estará disponible
           como un objeto en la variable <Resalt>values</Resalt> devuelto por <Resalt>useForm</Resalt>.
@@ -92,7 +92,7 @@ const Docs: FC = () => (
           <Resalt>registerInput</Resalt> requiere un parámetro obligatorio de tipo string que será usado como
           identificador único del input.
         </Paragrapph>
-        <Highlight className="html">{registerInputExamples}</Highlight>
+        <Highlight language="xml">{registerInputExamples}</Highlight>
       </Section>
       <Section id="checkbox-radio">
         <Title>Registrar checkbox y radio</Title>
@@ -104,18 +104,18 @@ const Docs: FC = () => (
           <Resalt>useForm</Resalt> nos devuelve la función <Resalt>registerCheckbox</Resalt> para manejar los inputs de
           tipo checkbox.
         </Paragrapph>
-        <Highlight className="javascript">{chackboxExample}</Highlight>
+        <Highlight language="javascript">{chackboxExample}</Highlight>
         <Paragrapph>
           También tenemos <Resalt>registerRadio</Resalt> para manejar los inputs de tipo radio,{' '}
           <Resalt>RegisterRadio</Resalt> requiere dos parámetros, el primero es el identificador y el segundo es el
           valor, vea el siguiente ejemplo:
         </Paragrapph>
-        <Highlight className="javascript">{radioExample}</Highlight>
+        <Highlight language="javascript">{radioExample}</Highlight>
       </Section>
       <Section>
         <Title>Ejemplo completo</Title>
         <Paragrapph>Aquí hay un ejemplo completo de los tipos de inputs junto con el envío usando axios</Paragrapph>
-        <Highlight className="javascript">{completeBasicExample}</Highlight>
+        <Highlight language="javascript">{completeBasicExample}</Highlight>
       </Section>
       <Section id="initial-values">
         <Title>Valores iniciales</Title>
@@ -125,17 +125,17 @@ const Docs: FC = () => (
           configuraciones donde le podemos pasar los valores iniciales. <Resalt>registerInput</Resalt> se encargará
           pasar el valor inicial correspondiente a cada input.
         </Paragrapph>
-        <Highlight className="javascript">{initialValuesInput}</Highlight>
+        <Highlight language="javascript">{initialValuesInput}</Highlight>
         <Paragrapph>
           En el caso de los inputs de tipo checkbox simplemente pasamos un booleano como valor inicial,{' '}
           <Resalt>registerCheckbox</Resalt> se encargara de generar la propiedad checked.
         </Paragrapph>
-        <Highlight className="javascript">{booleanDefaultValue}</Highlight>
+        <Highlight language="javascript">{booleanDefaultValue}</Highlight>
         <Paragrapph>
           Para los inputs de tipo radio, se marcará automaticamente la opcion correcta, register radio se encarga de
           generar la propiedad `checked` en base al estado inicial
         </Paragrapph>
-        <Highlight className="javascript">{exampleRadio}</Highlight>
+        <Highlight language="javascript">{exampleRadio}</Highlight>
       </Section>
       <Section id="set-state">
         <Title>Actualización de valores</Title>
@@ -149,7 +149,7 @@ const Docs: FC = () => (
           En el siguiente ejemplo, el valor de los inputs se establecen de forma programática con el evento `click` del
           botón.
         </Paragrapph>
-        <Highlight className="javascript">{exmapleSetInputValue}</Highlight>
+        <Highlight language="javascript">{exmapleSetInputValue}</Highlight>
       </Section>
       <Section id="reset">
         <Title>Reset</Title>
@@ -157,7 +157,7 @@ const Docs: FC = () => (
           Es común querer resetear los valores del formulario, para ello tenemos la función <Resalt>reset</Resalt>, esta
           función resetea el formulario a su valor inicial.
         </Paragrapph>
-        <Highlight className="javascript">{exampleReset}</Highlight>
+        <Highlight language="javascript">{exampleReset}</Highlight>
       </Section>
       <Section id="custom-values">
         <Title>Valores personalizado</Title>
@@ -177,18 +177,18 @@ const Docs: FC = () => (
         <Paragrapph>
           En el siguiente ejemplo, tenemos un valor personalizado que se inicializa como parte del valor inicial
         </Paragrapph>
-        <Highlight className="javascript">{exampleCustomValie1}</Highlight>
+        <Highlight language="javascript">{exampleCustomValie1}</Highlight>
         <Paragrapph>
           En el siguiente ejemplo se establece el valor personalizado usando la función <Resalt>setInputValue</Resalt>
         </Paragrapph>
-        <Highlight className="javascript">{exampleCustomValie2}</Highlight>
+        <Highlight language="javascript">{exampleCustomValie2}</Highlight>
         <Paragrapph>
           Los valores personalizados son tratados como parte del formulario, podemos tener múltiples valores
           personalizados, inicializarlos como parte del valor inicial, establecerlos en marcha con{' '}
           <Resalt>setInputValue</Resalt>, también podemos primero iniciarlo como parte del valor inicial y sobre la
           marcha actualizar su valor con <Resalt>setInputValue</Resalt>
         </Paragrapph>
-        <Highlight className="javascript">{exampleCustomValie3}</Highlight>
+        <Highlight language="javascript">{exampleCustomValie3}</Highlight>
       </Section>
       <Section id="custom-input">
         <Title>Integración con inputs personalizados</Title>
@@ -201,7 +201,7 @@ const Docs: FC = () => (
           Aquí hay un ejemplo con el componente DatePicker de material-ui pickers, recibe como props{' '}
           <Resalt>value</Resalt> y la función <Resalt>onChange</Resalt> que nos devuelve la fecha seleccionada.
         </Paragrapph>
-        <Highlight className="javascript">{exampleDataPicker}</Highlight>
+        <Highlight language="javascript">{exampleDataPicker}</Highlight>
       </Section>
       <Section id="intro-errors">
         <Title>Introducción al manejo de errores</Title>
@@ -228,12 +228,12 @@ const Docs: FC = () => (
         <Paragrapph>
           <Resalt>formErrors</Resalt> es un simple objeto con la descripción de los errores. Por ejemplo
         </Paragrapph>
-        <Highlight className="javascript">{formErrorsExample}</Highlight>
+        <Highlight language="javascript">{formErrorsExample}</Highlight>
         <Paragrapph>
           Usaremos este objeto de errores para mostrar mensajes en alguna parte de nuestra interfaz, en el siguiente
           ejemplo se muestran el error correspondiente debajo de cada input.
         </Paragrapph>
-        <Highlight className="javascript">{formErrorsExample2}</Highlight>
+        <Highlight language="javascript">{formErrorsExample2}</Highlight>
         <Paragrapph>Demostración interactiva del código anterior:</Paragrapph>
         <DemoFormErrors />
         <Paragrapph>
@@ -249,7 +249,7 @@ const Docs: FC = () => (
           entonces se inyecta la propiedad <Resalt>error: true</Resalt> si no hay un error se inyecta{' '}
           <Resalt>error: false</Resalt>, vea el siguiente ejemplo:
         </Paragrapph>
-        <Highlight className="javascript">{propError}</Highlight>
+        <Highlight language="javascript">{propError}</Highlight>
         <Paragrapph>
           Ya hemos visto como se define la propiedad <Resalt>error</Resalt> inyectada al input, ahora vamos a preparar
           nuestro input para cambiar el color del borde a rojo basándonos en la propiedad `error`. <br />
@@ -260,7 +260,7 @@ const Docs: FC = () => (
           <Resalt>error: true</Resalt>, en esta ocasión crearemos nuestro propio input para manejar la propiedad{' '}
           <Resalt>error</Resalt>.
         </Paragrapph>
-        <Highlight className="javascript">{inputWithPropError}</Highlight>
+        <Highlight language="javascript">{inputWithPropError}</Highlight>
         <Paragrapph>
           En el código anterior coloreamos el borde del input usando estilos en línea basada en la prop{' '}
           <Resalt>error</Resalt>; sin embargo, usted es libre de manejarlo como desee, puede alternar clases, puede
@@ -269,7 +269,7 @@ const Docs: FC = () => (
         <Paragrapph>
           Ahora vamos a usar nuestro nuevo componente <Resalt>GenericInput</Resalt>
         </Paragrapph>
-        <Highlight className="javascript">{useingGenericInput}</Highlight>
+        <Highlight language="javascript">{useingGenericInput}</Highlight>
         <Paragrapph>Ahora nuestros inputs deberían cambiar su borde a color rojo si hay un error</Paragrapph>
         <DemoFormErrorsCustomInput />
         <Paragrapph>
@@ -294,7 +294,7 @@ const Docs: FC = () => (
           Si necesita limpiar el error de algún input en específico proporcionamos la función{' '}
           <Resalt>removeInputError</Resalt> recibe como parámetro el nombre del input.
         </Paragrapph>
-        <Highlight className="javascript">{cleaningErrors}</Highlight>
+        <Highlight language="javascript">{cleaningErrors}</Highlight>
       </Section>
       <Section id="nested-inputs">
         <Title>Inputs anidados</Title>
@@ -306,7 +306,7 @@ const Docs: FC = () => (
           Considera el siguiente ejemplo, tenemos un formulario de dos pasos, en el paso 1 capturamos los datos
           generales y en el segundo paso capturamos datos más específicos.
         </Paragrapph>
-        <Highlight className="javascript">{formWithMultipleStepes}</Highlight>
+        <Highlight language="javascript">{formWithMultipleStepes}</Highlight>
         <Paragrapph>
           Lo que hemos hecho es pasar la función <Resalt>registerInput</Resalt> como prop a los componentes{' '}
           <Resalt>GeneralInput</Resalt> y <Resalt>SpecificData</Resalt>. Si necesitamos mostrar errores tendríamos que
@@ -326,16 +326,16 @@ const Docs: FC = () => (
           A <Resalt>FormProvider</Resalt> le tenemos que pasar todos los métodos y propiedades devueltos por{' '}
           <Resalt>useForm</Resalt>
         </Paragrapph>
-        <Highlight className="javascript">{formProvider}</Highlight>
+        <Highlight language="javascript">{formProvider}</Highlight>
         <Paragrapph>
           Con el hook <Resalt>useFormContext</Resalt> obtenemos acceso a todos los métodos y propiedades devueltos por{' '}
           <Resalt>useForm</Resalt>
         </Paragrapph>
-        <Highlight className="javascript">{useFormContextExample}</Highlight>
+        <Highlight language="javascript">{useFormContextExample}</Highlight>
         <Paragrapph>
           Ahora, continuando con nuestro ejemplo anterior del formulario de dos pasos, usando el contexto se vería así:
         </Paragrapph>
-        <Highlight className="javascript">{formContextWithSpeps2}</Highlight>
+        <Highlight language="javascript">{formContextWithSpeps2}</Highlight>
       </Section>
     </>
   </LayoutDividedWithMenu>

@@ -16,6 +16,10 @@ const MenuItemStyled = styled(HashLink)`
   }
 `;
 
+const TypographyStyled = styled(Typography)`
+  color: ${props => (props.theme.darkMode ? colors.white : colors.blackLight)};
+`;
+
 export interface ImenuItems
   extends Array<{
     location: string;
@@ -28,15 +32,15 @@ interface MenuPropsInterface {
 
 const Menu: FC<MenuPropsInterface> = ({ menuItems }) => (
   <Box>
-    <Typography fontSize="1.1em" fontWeight="bold" align="center" color="#fff">
+    <TypographyStyled fontSize="1.1em" fontWeight="bold" align="center">
       Menu
-    </Typography>
+    </TypographyStyled>
     <Box marginTop="1em">
       {menuItems &&
         menuItems.map(item => (
           <MenuItemStyled to={item.location} key={item.location} smooth>
             <Code />
-            <Typography>{item.label}</Typography>
+            <TypographyStyled>{item.label}</TypographyStyled>
           </MenuItemStyled>
         ))}
     </Box>

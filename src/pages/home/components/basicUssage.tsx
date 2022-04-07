@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
-import Highlight from 'react-highlight';
+import Highlight from '../../../components/highlight';
 import { colors } from '../../../constants';
 
 const basicUssageCode: string = `
@@ -30,7 +30,7 @@ const BasicUssage: FC = () => {
       <Typography variant="h6" color={colors.blueLight} fontWeight="bold">
         Uso básico
       </Typography>
-      <Highlight className="javascript">{basicUssageCode}</Highlight>
+      <Highlight>{basicUssageCode}</Highlight>
     </Box>
   );
 };

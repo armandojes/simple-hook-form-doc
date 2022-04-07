@@ -3,14 +3,18 @@ import { FC, ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../constants';
 
+const TypographyByTheme = styled(Typography)`
+  color: ${props => (props.theme.darkMode ? colors.white : colors.blackLight)};
+`;
+
 interface TitleProps {
   children: string;
 }
 
 export const Title: FC<TitleProps> = ({ children }) => (
-  <Typography color={colors.blueLight} variant="h6" fontWeight="bold">
+  <TypographyByTheme color={colors.blueLight} variant="h6" fontWeight="bold">
     {children}
-  </Typography>
+  </TypographyByTheme>
 );
 
 interface ParagrapphProps {
@@ -20,9 +24,9 @@ interface ParagrapphProps {
 export const Paragrapph: FC<ParagrapphProps> = ({ children }) => {
   return (
     <Box padding=".5em 0em">
-      <Typography color="#fff" variant="body1">
+      <TypographyByTheme color="#fff" variant="body1">
         {children}
-      </Typography>
+      </TypographyByTheme>
     </Box>
   );
 };
