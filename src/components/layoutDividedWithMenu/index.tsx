@@ -19,6 +19,7 @@ const BodyWrapper = styled.div`
   flex-grow: 1;
   max-width: 100%;
   box-sizing: border-box;
+  overflow: scroll;
 `;
 
 interface Props {

@@ -2,21 +2,22 @@ import { Box, Button, Collapse, Grid, TextField, Typography } from '@mui/materia
 import { useSnackbar } from 'notistack';
 import { FC, SyntheticEvent } from 'react';
 import { useForm } from 'simple-hook-form';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import Highlight from '../../../components/highlight';
 import { colors } from '../../../constants';
 import { useDarkMode } from '../../../context/darkMode';
 
-const Code = styled.code`
-  white-space: pre;
-`;
-
 const TextFieldStyled = styled(TextField)`
-  background: #333946;
-  border-radius: 0.3em;
-  & ::placeholder {
-    color: gray;
-    opacity: 1.7;
-  }
+  ${props =>
+    props.theme.darkMode &&
+    css`
+      background: #333946;
+      border-radius: 0.3em;
+      & ::placeholder {
+        color: gray;
+        opacity: 1.7;
+      }
+    `}
 `;
 
 interface Values {
@@ -71,12 +72,12 @@ const Demo: FC = () => {
 
   return (
     <Box padding="2em 0em">
-      <Typography fontWeight="bold" variant="h6" color={calculatedColor}>
-        Demo
-      </Typography>
-      <Typography color={calculatedColor}>* Todos los inputs son requeridos</Typography>
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
+          <Typography fontWeight="bold" variant="h6" color={calculatedColor}>
+            Demo
+          </Typography>
+          <Typography color={calculatedColor}>* Todos los inputs son requeridos</Typography>
           <form autoComplete="off" onSubmit={handleSubmit}>
             <TextFieldStyled
               margin="normal"
@@ -118,11 +119,11 @@ const Demo: FC = () => {
             </Collapse>
             <Box paddingTop="1em">
               <Grid container justifyContent="space-between" flexWrap="nowrap">
-                <Button type="submit" fullWidth variant="contained">
+                <Button type="submit" fullWidth variant={darkMode ? 'contained' : 'outlined'}>
                   Enviar
                 </Button>
                 <Box padding="1em" />
-                <Button fullWidth variant="contained" onClick={handleReset}>
+                <Button fullWidth variant={darkMode ? 'contained' : 'outlined'} onClick={handleReset}>
                   Reset
                 </Button>
               </Grid>
@@ -131,19 +132,15 @@ const Demo: FC = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Box marginTop="1em" marginLeft="2em">
-            <Typography fontWeight="bold" color={calculatedColor}>
-              Estado
-            </Typography>
+            <Typography color={calculatedColor}>Estado</Typography>
             <Box color={calculatedColor}>
-              <Code>{getResult(values)}</Code>
+              <Highlight>{getResult(values)}</Highlight>
             </Box>
           </Box>
           <Box marginTop="1em" marginLeft="2em">
-            <Typography fontWeight="bold" color={calculatedColor}>
-              Errores
-            </Typography>
+            <Typography color={calculatedColor}>Errores</Typography>
             <Box color={calculatedColor}>
-              <Code>{getErrors(formErrors)}</Code>
+              <Highlight>{getErrors(formErrors)}</Highlight>
             </Box>
           </Box>
         </Grid>

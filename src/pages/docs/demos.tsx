@@ -1,6 +1,7 @@
 import { Collapse, Typography, Box, Button, Grid } from '@mui/material';
 import { FC } from 'react';
 import { useForm } from 'simple-hook-form';
+import { DarkModeOff, DarkModeOn } from '../../components/CalcByDarkMode';
 import { Code, TextFieldStyled } from './components';
 
 interface FormErrors {
@@ -69,9 +70,16 @@ export const DemoFormErrors: FC = () => {
               </Typography>
             </Collapse>
             <Box marginTop="1em">
-              <Button variant="contained" onClick={handleSetErrors}>
-                Establecer errores
-              </Button>
+              <DarkModeOn>
+                <Button variant="contained" onClick={handleSetErrors}>
+                  Establecer errores
+                </Button>
+              </DarkModeOn>
+              <DarkModeOff>
+                <Button variant="outlined" onClick={handleSetErrors}>
+                  Establecer errores
+                </Button>
+              </DarkModeOff>
             </Box>
           </div>
         </Grid>
@@ -125,9 +133,16 @@ export const DemoFormErrorsCustomInput: FC = () => {
               </Typography>
             </Collapse>
             <Box marginTop="1em">
-              <Button variant="contained" onClick={handleSetErrors}>
-                Establecer errores
-              </Button>
+              <DarkModeOn>
+                <Button variant="contained" onClick={handleSetErrors}>
+                  Establecer errores
+                </Button>
+              </DarkModeOn>
+              <DarkModeOff>
+                <Button variant="outlined" onClick={handleSetErrors}>
+                  Establecer errores
+                </Button>
+              </DarkModeOff>
             </Box>
           </div>
         </Grid>

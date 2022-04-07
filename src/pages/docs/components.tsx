@@ -1,6 +1,6 @@
 import { Box, TextField, Typography } from '@mui/material';
 import { FC, ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors } from '../../constants';
 
 const TypographyByTheme = styled(Typography)`
@@ -12,9 +12,9 @@ interface TitleProps {
 }
 
 export const Title: FC<TitleProps> = ({ children }) => (
-  <TypographyByTheme color={colors.blueLight} variant="h6" fontWeight="bold">
+  <Typography color={colors.blueLight} variant="h6" fontWeight="bold">
     {children}
-  </TypographyByTheme>
+  </Typography>
 );
 
 interface ParagrapphProps {
@@ -47,10 +47,14 @@ export const Code = styled.code`
 `;
 
 export const TextFieldStyled = styled(TextField)`
-  background: #333946;
-  border-radius: 0.3em;
-  & ::placeholder {
-    color: gray;
-    opacity: 1.7;
-  }
+  ${props =>
+    props.theme.darkMode &&
+    css`
+      background: #333946;
+      border-radius: 0.3em;
+      & ::placeholder {
+        color: gray;
+        opacity: 1.7;
+      }
+    `}
 `;

@@ -5,6 +5,8 @@ import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FC } from 'react';
+import { Hidden } from '@mui/material';
+import { Menu } from '@mui/icons-material';
 import ToggleThemeMode from './components/toggleThemeMode';
 import { colors } from '../../constants';
 
@@ -26,22 +28,31 @@ const ToolbarStyled = styled(Toolbar)`
   justify-content: space-between;
 `;
 
+const MenuStyled = styled(Menu)`
+  color: ${props => (props.theme.darkMode ? colors.white : colors.blackLight)};
+`;
+
 const Header: FC = () => {
   return (
     <AppBarStyled position="sticky">
       <Container maxWidth="xl">
         <ToolbarStyled disableGutters>
-          <MenuWrapper>
-            <LinkStyled to="/">
-              <Typography>Inicio</Typography>
-            </LinkStyled>
-            <LinkStyled to="/docs">
-              <Typography>Documentación</Typography>
-            </LinkStyled>
-            <LinkStyled href="https://github.com/armandojes/simple-hook-form" as="a">
-              <Typography>Github</Typography>
-            </LinkStyled>
-          </MenuWrapper>
+          <Hidden smDown>
+            <MenuWrapper>
+              <LinkStyled to="/">
+                <Typography>Inicio</Typography>
+              </LinkStyled>
+              <LinkStyled to="/docs">
+                <Typography>Documentación</Typography>
+              </LinkStyled>
+              <LinkStyled href="https://github.com/armandojes/simple-hook-form" as="a">
+                <Typography>Github</Typography>
+              </LinkStyled>
+            </MenuWrapper>
+          </Hidden>
+          <Hidden smUp>
+            <MenuStyled />
+          </Hidden>
           <ToggleThemeMode />
         </ToolbarStyled>
       </Container>
