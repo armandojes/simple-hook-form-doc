@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FC } from 'react';
 import { Hidden } from '@mui/material';
-import { Menu } from '@mui/icons-material';
 import ToggleThemeMode from './components/toggleThemeMode';
 import { colors } from '../../constants';
+import MenuMobile from './components/menuMobile';
 
 const AppBarStyled = styled(AppBar)`
   background-color: ${props => (props.theme.darkMode ? colors.blackLight : colors.white)};
+  z-index: 9999;
 `;
 
 const LinkStyled = styled(Link)`
@@ -26,10 +27,6 @@ const MenuWrapper = styled.div`
 
 const ToolbarStyled = styled(Toolbar)`
   justify-content: space-between;
-`;
-
-const MenuStyled = styled(Menu)`
-  color: ${props => (props.theme.darkMode ? colors.white : colors.blackLight)};
 `;
 
 const Header: FC = () => {
@@ -51,7 +48,7 @@ const Header: FC = () => {
             </MenuWrapper>
           </Hidden>
           <Hidden smUp>
-            <MenuStyled />
+            <MenuMobile />
           </Hidden>
           <ToggleThemeMode />
         </ToolbarStyled>
