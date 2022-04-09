@@ -43,9 +43,7 @@ const getResult = (values: Values) => ` {
 `;
 
 const Demo: FC = () => {
-  const { registerInput, values, formErrors, setFormErrors, reset } = useForm({
-    initialValues: {},
-  });
+  const { registerInput, values, formErrors, setFormErrors, reset } = useForm();
   const snakbar = useSnackbar();
   const { darkMode } = useDarkMode();
 
