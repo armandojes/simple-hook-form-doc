@@ -24,7 +24,7 @@ const MenuIttem = styled(Link)`
 `;
 
 const MenuMobile: FC = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -44,7 +44,7 @@ const MenuMobile: FC = () => {
               <Typography variant="h6">Documentacion</Typography>
             </MenuIttem>
             <MenuIttem as="a" href="https://github.com/armandojes/simple-hook-form" target="_blank">
-              <Typography variant="h6">Documentacion</Typography>
+              <Typography variant="h6">Github</Typography>
             </MenuIttem>
           </Wrapper>
         </Box>
